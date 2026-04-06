@@ -121,7 +121,7 @@ img {
 
   @media (min-width: $breakpoint-md) {
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 280px 120px;
+    grid-template-rows: 300px 130px;
   }
 
   &__item {
@@ -318,7 +318,7 @@ img {
   &__embed {
     iframe {
       width: 100%;
-      height: 180px;
+      height: 110px;
       border: 0;
       display: block;
     }
@@ -545,6 +545,7 @@ img {
 // =============================================================================
 
 .reviews {
+  scroll-margin-top: 72px;
   background: $color-white;
   border: 1px solid $color-border;
   border-radius: $radius-md;
