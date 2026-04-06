@@ -94,6 +94,73 @@
 
   lightbox.init();
 
+  // ── Room lightboxes ────────────────────────────────────────────────────────
+  ['room-1', 'room-2', 'room-3', 'room-4', 'room-5'].forEach(function (id) {
+    var roomEl = document.getElementById(id);
+    if (!roomEl) return;
+
+    var roomLightbox = new PhotoSwipeLightbox({
+      gallery:    '#' + id,
+      children:   'a[data-pswp-width]',
+      pswpModule: PhotoSwipe,
+
+      imageClickAction: 'next',
+      tapAction:        'next',
+      doubleTapAction:  false,
+
+      padding: { top: 20, bottom: 96, left: 20, right: 20 },
+      showHideAnimationType: 'fade',
+    });
+
+    roomLightbox.on('uiRegister', function () {
+      roomLightbox.pswp.ui.registerElement({
+        name:     'thumbs-strip',
+        order:    9,
+        isButton: false,
+        appendTo: 'root',
+        onInit:   function (el, pswp) {
+          el.className = 'pswp__thumbs-strip';
+          var inner = document.createElement('div');
+          inner.className = 'pswp__thumbs-inner';
+          el.appendChild(inner);
+
+          var links = Array.from(roomEl.querySelectorAll('a[data-pswp-width]'));
+          links.forEach(function (link, index) {
+            var thumb = document.createElement('button');
+            thumb.className = 'pswp__thumb';
+            thumb.type = 'button';
+            thumb.setAttribute('aria-label', 'Zdjęcie ' + (index + 1));
+            var img = document.createElement('img');
+            var srcImg = link.querySelector('img');
+            img.src = srcImg ? srcImg.src : link.href;
+            img.loading = 'lazy';
+            img.draggable = false;
+            thumb.appendChild(img);
+            inner.appendChild(thumb);
+            thumb.addEventListener('click', function () { pswp.goTo(index); });
+          });
+
+          function updateActive() {
+            var thumbs = inner.querySelectorAll('.pswp__thumb');
+            thumbs.forEach(function (t, i) {
+              t.classList.toggle('pswp__thumb--active', i === pswp.currIndex);
+            });
+            var activeThumb = thumbs[pswp.currIndex];
+            if (activeThumb) {
+              var target = activeThumb.offsetLeft - el.offsetWidth / 2 + activeThumb.offsetWidth / 2;
+              el.scrollTo({ left: target, behavior: 'smooth' });
+            }
+          }
+
+          pswp.on('change', updateActive);
+          pswp.on('afterInit', updateActive);
+        },
+      });
+    });
+
+    roomLightbox.init();
+  });
+
   // Dostępność klawiatury dla linków galerii
   galleryEl.querySelectorAll('a[data-pswp-width]').forEach(function (link) {
     link.setAttribute('role', 'button');
