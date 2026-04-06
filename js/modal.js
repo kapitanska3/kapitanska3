@@ -8,11 +8,7 @@
   if (!modal) return;
 
   function openModal() {
-    var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = 'hidden';
-    document.body.style.paddingRight = scrollbarWidth + 'px';
-    var headerInner = document.querySelector('.property-header__inner');
-    if (headerInner) headerInner.style.paddingRight = scrollbarWidth + 16 + 'px';
     modal.hidden = false;
     closeBtn.focus();
   }
@@ -20,9 +16,6 @@
   function closeModal() {
     modal.hidden = true;
     document.body.style.overflow = '';
-    document.body.style.paddingRight = '';
-    var headerInner = document.querySelector('.property-header__inner');
-    if (headerInner) headerInner.style.paddingRight = '';
   }
 
   // Otwieranie przez przyciski CTA

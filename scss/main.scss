@@ -27,6 +27,10 @@ $breakpoint-lg: 1024px;
 // Base
 // =============================================================================
 
+html {
+  scrollbar-gutter: stable;
+}
+
 *,
 *::before,
 *::after {
@@ -876,6 +880,11 @@ img {
 .pswp {
   --pswp-bg: #000;
   --pswp-placeholder-bg: #111;
+}
+
+// Zapobiegaj deformacji zdjęć przez globalny max-width: 100%
+.pswp__img {
+  max-width: none !important;
 }
 
 .pswp__button--close {
