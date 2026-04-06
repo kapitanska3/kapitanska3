@@ -146,7 +146,7 @@
           buildPagination(currentPage, totalPages, function (p) {
             var section = document.getElementById('reviews');
             if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            renderPage(p, true);
+            setTimeout(function () { renderPage(p, true); }, 400);
           })
         );
       }
