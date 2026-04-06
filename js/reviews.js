@@ -120,9 +120,15 @@
       const slice = reviews.slice(start, start + PER_PAGE);
 
       if (animate) {
-        grid.style.minHeight = '';
-        grid.style.opacity = '1';
-        grid.innerHTML = '<div class="reviews__loading"><svg class="reviews__spinner" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke-width="4"/></svg></div>';
+        grid.style.transition = 'opacity 0.15s ease';
+        grid.style.opacity = '0';
+        grid.style.minHeight = grid.offsetHeight + 'px';
+
+        setTimeout(function () {
+          grid.style.minHeight = '';
+          grid.innerHTML = '<div class="reviews__loading"><svg class="reviews__spinner" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke-width="4"/></svg></div>';
+          grid.style.opacity = '1';
+        }, 150);
 
         setTimeout(function () {
           grid.style.opacity = '0';
@@ -131,8 +137,11 @@
               return buildCard(r, start + i);
             }).join('\n');
             grid.style.opacity = '1';
-          }, 200);
-        }, 800);
+            setTimeout(function () {
+              grid.style.transition = '';
+            }, 150);
+          }, 150);
+        }, 950);
       } else {
         grid.innerHTML = slice.map(function (r, i) {
           return buildCard(r, start + i);
@@ -144,9 +153,13 @@
       if (totalPages > 1) {
         paginationContainer.appendChild(
           buildPagination(currentPage, totalPages, function (p) {
-            var section = document.getElementById('reviews');
-            if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            setTimeout(function () { renderPage(p, true); }, 400);
+            if (window.innerWidth < 1024) {
+              var section = document.getElementById('reviews');
+              if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              setTimeout(function () { renderPage(p, true); }, 400);
+            } else {
+              renderPage(p, true);
+            }
           })
         );
       }
