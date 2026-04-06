@@ -140,11 +140,30 @@
     renderPage(1);
   }
 
+  const MONTHS = {
+    'styczeń': 1, 'lutego': 2, 'luty': 2, 'marzec': 3, 'kwiecień': 4,
+    'maj': 5, 'czerwiec': 6, 'lipiec': 7, 'sierpień': 8,
+    'wrzesień': 9, 'październik': 10, 'listopad': 11, 'grudzień': 12,
+  };
+
+  function parseDate(dateStr) {
+    const parts = dateStr.trim().toLowerCase().split(/\s+/);
+    const month = MONTHS[parts[0]] || 0;
+    const year  = parseInt(parts[1], 10) || 0;
+    return year * 100 + month;
+  }
+
+  function sortByDateDesc(reviews) {
+    return reviews.slice().sort(function (a, b) {
+      return parseDate(b.date) - parseDate(a.date);
+    });
+  }
+
   // Inline JSON z <script id="reviews-data">
   var inlineEl = document.getElementById('reviews-data');
   if (inlineEl) {
     try {
-      render(JSON.parse(inlineEl.textContent));
+      render(sortByDateDesc(JSON.parse(inlineEl.textContent)));
     } catch (e) {
       console.error('Błąd parsowania reviews-data:', e);
     }
@@ -157,7 +176,7 @@
       if (!res.ok) throw new Error('HTTP ' + res.status);
       return res.json();
     })
-    .then(render)
+    .then(function (data) { render(sortByDateDesc(data)); })
     .catch(function (err) {
       console.error('Nie można wczytać opinii:', err);
     });
