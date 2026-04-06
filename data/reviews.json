@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Jolanta",
+    "country": "Polska",
+    "flag": "🇵🇱",
+    "date": "sierpień 2024",
+    "label": "Wyjątkowy",
+    "score": 10,
+    "text": "Bardzo miła pani właścicielka, spokojna okolica. Zaskoczyło mnie ogrom lokali gastronomicznych, straganów z pamiątkami. Naprawdę podobało mi się bardzo."
+  },
+  {
+    "name": "Karolina",
+    "country": "Polska",
+    "flag": "🇵🇱",
+    "date": "sierpień 2024",
+    "label": "Wyjątkowy",
+    "score": 10,
+    "text": "Pokoje czyste i schludne. Bardzo miła Pani gospodarz. Duży parking koło domu. Do plaży bardzo blisko. Ogólnie świetna lokalizacja. Polecamy 🙂"
+  },
+  {
+    "name": "Sladkevych",
+    "country": "Polska",
+    "flag": "🇵🇱",
+    "date": "sierpień 2024",
+    "label": "Znakomity",
+    "score": 9.0,
+    "text": "Fajna pani 💐 Do morza 5–7 minut."
+  },
+  {
+    "name": "Monika",
+    "country": "Polska",
+    "flag": "🇵🇱",
+    "date": "sierpień 2024",
+    "label": "Znakomity",
+    "score": 9.0,
+    "text": "Właścicielka przemiła, bardzo dziękujemy za gościnę."
+  },
+  {
+    "name": "Paweł",
+    "country": "Polska",
+    "flag": "🇵🇱",
+    "date": "sierpień 2024",
+    "label": "Wyjątkowy",
+    "score": 10,
+    "text": "Bardzo ładne miejsce, cisza i spokój."
+  },
+  {
+    "name": "Zbigniew",
+    "country": "Wielka Brytania",
+    "flag": "🇬🇧",
+    "date": "lipiec 2024",
+    "label": "Wyjątkowy",
+    "score": 10,
+    "text": "Dobra lokalizacja, czysto i miejsce do zaparkowania na posesji. Indywidualne wejście do pokoju."
+  },
+  {
+    "name": "Natalia",
+    "country": "Polska",
+    "flag": "🇵🇱",
+    "date": "sierpień 2024",
+    "label": "Znakomity",
+    "score": 9.0,
+    "text": "Świetna lokalizacja, wszędzie blisko. Bardzo czysto, parking na posesji, sympatyczna Właścicielka. Polecamy."
+  },
+  {
+    "name": "Katarzyna",
+    "country": "Polska",
+    "flag": "🇵🇱",
+    "date": "lipiec 2024",
+    "label": "Znakomity",
+    "score": 9.0,
+    "text": "Blisko do plaży, bardzo miła Właścicielka."
+  },
+  {
+    "name": "Robert",
+    "country": "Polska",
+    "flag": "🇵🇱",
+    "date": "lipiec 2024",
+    "label": "Znakomity",
+    "score": 9.0,
+    "text": "Spokój, odpoczynek, bardzo blisko do plaży i centrum miasteczka. Miła obsługa, parking dla auta na miejscu. Polecam."
+  },
+  {
+    "name": "Marek",
+    "country": "USA",
+    "flag": "🇺🇸",
+    "date": "lipiec 2024",
+    "label": "Bardzo dobry",
+    "score": 8.0,
+    "text": "Bardzo dobra lokalizacja, blisko morze i restauracje. Miła Pani Gospodarz."
+  },
+  {
+    "name": "Vera",
+    "country": "Niemcy",
+    "flag": "🇩🇪",
+    "date": "sierpień 2025",
+    "label": "Znakomity",
+    "score": 9.0,
+    "text": "Sehr schöne Lage, sehr nah am Meer, der Garten den man nutzen kann ist mit viel Liebe gestaltet."
+  },
+  {
+    "name": "Robert",
+    "country": "Czechy",
+    "flag": "🇨🇿",
+    "date": "lipiec 2025",
+    "label": "Wyjątkowy",
+    "score": 10,
+    "text": "Vše bylo super."
+  }
+]

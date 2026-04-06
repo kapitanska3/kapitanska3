@@ -1,0 +1,8 @@
+node_modules/
+.idea/
+
+# pliki pośrednie buildu (main.css to wynik scalenia tych dwóch)
+css/tailwind.css
+css/scss.css
+css/main.css.map
+css/scss.css.map

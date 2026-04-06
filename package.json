@@ -1,0 +1,23 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:tw": "tailwindcss -i scss/tailwind.css -o css/tailwind.css --minify",
+    "build:scss": "sass scss/main.scss css/scss.css --style=compressed",
+    "build:css": "npm run build:tw && npm run build:scss && cat css/tailwind.css css/scss.css > css/main.css",
+    "watch:css": "sass --watch scss/main.scss:css/scss.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "photoswipe": "^5.4.4",
+    "sass": "^1.99.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
