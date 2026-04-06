@@ -114,30 +114,45 @@
       grid.parentNode.insertBefore(paginationContainer, grid.nextSibling);
     }
 
-    function renderPage(page) {
+    function renderPage(page, animate) {
       currentPage = page;
       const start = (page - 1) * PER_PAGE;
       const slice = reviews.slice(start, start + PER_PAGE);
 
-      grid.innerHTML = slice.map(function (r, i) {
-        return buildCard(r, start + i);
-      }).join('\n');
+      if (animate) {
+        grid.style.minHeight = '';
+        grid.style.opacity = '1';
+        grid.innerHTML = '<div class="reviews__loading"><svg class="reviews__spinner" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke-width="4"/></svg></div>';
+
+        setTimeout(function () {
+          grid.style.opacity = '0';
+          setTimeout(function () {
+            grid.innerHTML = slice.map(function (r, i) {
+              return buildCard(r, start + i);
+            }).join('\n');
+            grid.style.opacity = '1';
+          }, 200);
+        }, 800);
+      } else {
+        grid.innerHTML = slice.map(function (r, i) {
+          return buildCard(r, start + i);
+        }).join('\n');
+      }
 
       // Paginacja widoczna tylko gdy więcej niż 1 strona
       paginationContainer.innerHTML = '';
       if (totalPages > 1) {
         paginationContainer.appendChild(
           buildPagination(currentPage, totalPages, function (p) {
-            renderPage(p);
-            // Scroll do nagłówka sekcji opinii
-            var section = document.querySelector('.reviews');
+            var section = document.getElementById('reviews');
             if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            renderPage(p, true);
           })
         );
       }
     }
 
-    renderPage(1);
+    renderPage(1, false);
   }
 
   const MONTHS = {
@@ -181,3 +196,11 @@
       console.error('Nie można wczytać opinii:', err);
     });
 })();
+
+function clearReviewsHash() {
+  if (window.location.hash === '#reviews') {
+    history.replaceState(null, '', window.location.pathname);
+  }
+}
+window.addEventListener('load', clearReviewsHash);
+window.addEventListener('hashchange', clearReviewsHash);

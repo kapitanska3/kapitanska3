@@ -130,6 +130,10 @@ img {
     position: relative;
     cursor: pointer;
 
+    &:focus {
+      outline: none;
+    }
+
     &--featured {
       @media (min-width: $breakpoint-md) {
         grid-row: 1;
@@ -193,8 +197,11 @@ img {
     color: $color-white;
     font-size: 1rem;
     font-weight: 700;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    line-height: 1.2;
     pointer-events: none;
   }
 
@@ -545,7 +552,7 @@ img {
 // =============================================================================
 
 .reviews {
-  scroll-margin-top: 72px;
+  scroll-margin-top: 90px;
   background: $color-white;
   border: 1px solid $color-border;
   border-radius: $radius-md;
@@ -737,6 +744,20 @@ img {
     color: #9ca3af;
     margin: 10px 0 0;
   }
+
+  &__email {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $color-accent;
+    text-decoration: none;
+    margin-top: 16px;
+    transition: color 0.15s;
+
+    &:hover {
+      color: $color-accent-hover;
+    }
+  }
 }
 
 @keyframes modal-in {
@@ -816,6 +837,35 @@ img {
 // =============================================================================
 // Block: reviews-pagination
 // =============================================================================
+
+.reviews__grid {
+  transition: opacity 0.2s ease;
+}
+
+.reviews__loading {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0 40px;
+}
+
+.reviews__spinner {
+  width: 36px;
+  height: 36px;
+  animation: spin 0.8s linear infinite;
+
+  circle {
+    stroke: #0071c2;
+    stroke-linecap: round;
+    stroke-dasharray: 80;
+    stroke-dashoffset: 60;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
 .reviews-pagination {
   display: flex;
